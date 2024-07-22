@@ -1,5 +1,39 @@
 .employee {
   padding: 10px 10%;
+  margin-top: 50px;
   display: flex;
   align-items: center;
+
+  &__details {
+    &-filters {
+      margin-bottom: 50px;
+
+      &-input-row {
+        display: flex;
+        justify-content: space-between;
+
+        .form-control {
+          background-color: rgb(37, 37, 37);
+        }
+
+        .input-group {
+          &-text {
+            font-weight: bold;
+            background-color: rgb(181, 181, 34);
+          }
+        }
+
+        .input-group:first-child {
+          margin-right: 60px;
+        }
+      }
+
+      &-button {
+        margin: 20px 0;
+        button {
+          width: 15%;
+        }
+      }
+    }
+  }
 }

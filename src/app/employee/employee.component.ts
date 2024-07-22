@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class EmployeeComponent {
 
+  filterEmployees(): void {
+    alert("filtered successfully");
+  }
+
 }

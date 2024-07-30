@@ -1,8 +1,6 @@
 .employee {
   padding: 10px 10%;
   margin-top: 50px;
-  display: flex;
-  align-items: center;
 
   &__details {
     &-filters {
@@ -14,6 +12,7 @@
 
         .form-control {
           background-color: rgb(37, 37, 37);
+          color: white;
         }
 
         .input-group {
@@ -32,6 +31,7 @@
         margin: 20px 0;
         button {
           width: 15%;
+          padding: 10px;
         }
       }
     }

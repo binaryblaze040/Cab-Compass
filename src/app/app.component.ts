@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { EmployeeService } from './employee.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,5 @@ import { EmployeeService } from './employee.service';
 export class AppComponent {
   title = 'Cab-Compass';
 
-  constructor(private EmployeeService:EmployeeService) {
-
-  }
+  constructor() {}
 }

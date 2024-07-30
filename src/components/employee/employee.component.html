@@ -1,6 +1,5 @@
 <div class="employee">
   <div class="employee__details">
-
     <div class="employee__details-filters">
       <div class="employee__details-filters-input-row">
         <div class="input-group mb-3">
@@ -8,6 +7,7 @@
           <input
             type="text"
             class="form-control"
+            [(ngModel)]="filters.employeeId"
           />
         </div>
         <div class="input-group mb-3">
@@ -15,6 +15,7 @@
           <input
             type="text"
             class="form-control"
+            [(ngModel)]="filters.email"
           />
         </div>
       </div>
@@ -23,8 +24,9 @@
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">Contact</span>
           <input
-            type="text"
+            type="number"
             class="form-control"
+            [(ngModel)]="filters.contact"
           />
         </div>
         <div class="input-group mb-3">
@@ -32,12 +34,13 @@
           <input
             type="text"
             class="form-control"
+            [(ngModel)]="filters.address"
           />
         </div>
       </div>
 
       <div class="employee__details-filters-button">
-        <button type="button" class="btn btn-success" (click)="filterEmployees()">Search</button>
+        <button type="button" class="btn btn-success" (click)="getFilteredEmployees()">Search</button>
       </div>
 
     </div>
@@ -45,7 +48,7 @@
     <table class="table table-dark table-hover">
       <thead>
         <tr>
-          <th scope="col">Employee ID</th>
+          <th scope="col">Employee Id</th>
           <th scope="col">Name</th>
           <th scope="col">Email</th>
           <th scope="col">Contact No.</th>
@@ -54,29 +57,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">720</th>
-          <td>Himanshu</td>
-          <td>himanshu.h&#64;chubb.com</td>
-          <td>8456095076</td>
-          <td>Senior Software Developer</td>
-          <td>Stanza Living, P Janardhan Reddy Nagar, Gachhibowli</td>
-        </tr>
-        <tr>
-          <th scope="row">550</th>
-          <td>Mohan Jinaga</td>
-          <td>mohan.jinaga&#64;chubb.com</td>
-          <td>9999999888</td>
-          <td>Technical Lead</td>
-          <td>Smondo Gachibowli</td>
-        </tr>
-        <tr>
-          <th scope="row">1550</th>
-          <td>Abhishek Saprey</td>
-          <td>abhishek.saprey&#64;chubb.com</td>
-          <td>9984292449</td>
-          <td>Software Developer</td>
-          <td>Botanical Garden, Kondapur</td>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.employeeId }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.contact }}</td>
+          <td>{{ employee.designation }}</td>
+          <td>{{ employee.address }}</td>
         </tr>
       </tbody>
     </table>

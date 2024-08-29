@@ -39,8 +39,15 @@
         </div>
       </div>
 
-      <div class="employee__details-filters-button">
-        <button type="button" class="btn btn-success" (click)="getFilteredEmployees()">Search</button>
+      <div class="employee__details-filters-buttons">
+        <div class="employee__details-filters-buttons__search">
+          <button type="button" class="btn btn-success button" (click)="getFilteredEmployees()">Search</button>
+        </div>
+        <div class="employee__details-filters-buttons__update">
+          <button *ngIf="!editMode" type="button" class="btn btn-info button" (click)="toggleEditMode()">Edit employee details</button>
+          <button *ngIf="editMode" type="button" class="btn btn-warning button" (click)="toggleEditMode()">Back to View Mode</button>
+          <button type="button" class="btn btn-info button" (click)="addEmployee()">Add an employee</button>
+        </div>
       </div>
 
     </div>
@@ -54,6 +61,7 @@
           <th scope="col">Contact No.</th>
           <th scope="col">Designation</th>
           <th scope="col">Address</th>
+          <th *ngIf="editMode" scope="col" colspan="2">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -64,6 +72,8 @@
           <td>{{ employee.contact }}</td>
           <td>{{ employee.designation }}</td>
           <td>{{ employee.address }}</td>
+          <td *ngIf="editMode"><button type="button" (click)="editEmployee(employee)" class="btn btn-primary button">Edit</button></td>
+          <td *ngIf="editMode"><button type="button" (click)="deleteEmployee(employee)" class="btn btn-danger button">Delete</button></td>
         </tr>
       </tbody>
     </table>

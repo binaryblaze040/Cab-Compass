@@ -27,13 +27,30 @@
         }
       }
 
-      &-button {
+      &-buttons {
+        display: flex;
+        justify-content: space-between;
         margin: 20px 0;
-        button {
-          width: 15%;
+
+        &__update > *:not(:last-child) {
+          margin-right: 50px; 
+        }
+
+        &__update {
+          .button {
+          font-weight: bold;
+          }
+        }
+
+        .button {
           padding: 10px;
+          min-width: 300px;
         }
       }
+    }
+
+    .table {
+      text-align: center;
     }
   }
 }

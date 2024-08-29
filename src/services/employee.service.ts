@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environment';
-import { Employee } from '../types';
+import { APIResponse, Employee } from '../types';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,6 +18,18 @@ export class EmployeeService implements OnInit {
   }
 
   getAllEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiUrl + '/employees')
+    return this.http.get<Employee[]>(this.apiUrl + '/employees');
+  }
+
+  addEmployee(employee: Employee): Observable<APIResponse> {
+    return this.http.post<APIResponse>(this.apiUrl + '/add-employee', employee);
+  }
+
+  editEmployee(employee: Employee): Observable<APIResponse> {
+    return this.http.post<APIResponse>(this.apiUrl + '/edit-employee', employee);
+  }
+
+  deleteEmployee(employee: Employee): Observable<APIResponse> {
+    return this.http.post<APIResponse>(this.apiUrl + '/delete-employee', employee);
   }
 }

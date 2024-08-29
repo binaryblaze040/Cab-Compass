@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee, EmployeeFilters } from '../../types';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SnackbarService } from '../../services/snackbar.service';
 import { EmployeeService } from '../../services/employee.service';
+import { AddEmployeeComponent } from '../../dialogs/add-employee/add-employee.component';
 
 @Component({
   selector: 'app-employee',
@@ -11,10 +13,15 @@ import { EmployeeService } from '../../services/employee.service';
 export class EmployeeComponent implements OnInit {
   filters: EmployeeFilters = {};
 
+  editMode = false;
   employees: Employee[] = [];
   allEmployees: Employee[] = [];
 
-  constructor(private _snackbar: SnackbarService, private _employeeService: EmployeeService) {
+  constructor(
+    private _snackbar: SnackbarService,
+    private _employeeService: EmployeeService,
+    private dialog: MatDialog,
+  ) {
   }
 
   ngOnInit(): void {
@@ -40,7 +47,7 @@ export class EmployeeComponent implements OnInit {
     if (this.filters.employeeId) {
       this.employees = this.employees.filter((employee) => {
         return this.filters.employeeId
-          ? this.containsSubstring(employee.employeeId, this.filters.employeeId)
+          ? employee.employeeId === this.filters.employeeId
           : true;
       });
     }
@@ -73,5 +80,34 @@ export class EmployeeComponent implements OnInit {
     }
 
     this._snackbar.openSnackBar("center", "bottom", 5, "Filters applied, " + this.employees.length + (this.employees.length > 1? " employees found!" : " employee found!"));
+  }
+
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
+  }
+
+  addEmployee(): void {
+
+  }
+
+  editEmployee(employee: Employee): void {
+    // open a model to get the changes
+    
+      this.dialog.open(AddEmployeeComponent);
+  }
+
+  deleteEmployee(employee: Employee): void {
+    if (confirm("Are You sure you want to delete " + employee.name + " ?") == true) {
+      this._employeeService.deleteEmployee(employee)
+      .subscribe({
+        next: () => {
+          alert(employee.name + " deleted successfully!");
+        },
+        error: (error) => {
+          alert("Deletion failed!");
+          console.error('Error deleting employee: ', error);
+        }
+      });
+    }
   }
 }

@@ -54,3 +54,24 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+
+// taxi scroll bar
+
+/* Hide the default scrollbar */
+::-webkit-scrollbar {
+  width: 35px;
+}
+
+::-webkit-scrollbar-track {
+  background: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: url('./assets/icons/scroll-taxi.png');
+  background-size: cover;
+  height: 85px;
+}
+

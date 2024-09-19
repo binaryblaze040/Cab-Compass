@@ -1,0 +1,75 @@
+
+.custom-checkbox:checked {
+  background-color: #ffdd00; /* Change this to your desired color */
+  border-color: #ffdd00; /* Change this to match the background color */
+}
+/* Customize the appearance of the toggle switch */
+.custom-checkbox:focus {
+  box-shadow: 0 0 0 0.2rem rgb(176, 182, 76);
+}
+
+.custom-checkbox {
+  width: 2.5em;
+  height: 1.25em;
+  background-color: #ccc;
+  border-radius: 1em;
+  position: relative;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+/* Customize the appearance of the toggle knob */
+.custom-checkbox::before {
+  content: '';
+  position: absolute;
+  top: 0.125em;
+  left: 0.125em;
+  width: 1em;
+  height: 1em;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.15s ease-in-out;
+}
+
+/* Move the knob when checked */
+.custom-checkbox:checked::before {
+  transform: translateX(1.25em); /* Move the knob to the right */
+}
+.employee {
+  padding: 10px 10%;
+  margin-top: 50px;
+
+  &__details {
+    &-filters {
+      margin-bottom: 50px;
+
+      &-input-row {
+        display: flex;
+        justify-content: space-between;
+
+        .form-control {
+          background-color: rgb(37, 37, 37);
+          color: white;
+        }
+
+        .input-group {
+          &-text {
+            font-weight: bold;
+            background-color: rgb(181, 181, 34);
+          }
+        }
+
+        .input-group:first-child {
+          margin-right: 60px;
+        }
+      }
+
+      &-button {
+        margin: 20px 0;
+        button {
+          width: 15%;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

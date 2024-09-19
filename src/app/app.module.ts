@@ -15,6 +15,7 @@ import { NavBarComponent } from '../components/nav-bar/nav-bar.component';
 import { HomePageComponent } from '../components/home-page/home-page.component';
 import { AssignCabComponent } from '../components/assign-cab/assign-cab.component';
 import { AddEmployeeComponent } from '../dialogs/add-employee/add-employee.component';
+import { EditEmployeeComponent } from '../dialogs/edit-employee/edit-employee.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AddEmployeeComponent } from '../dialogs/add-employee/add-employee.compo
     HomePageComponent,
     AssignCabComponent,
     AddEmployeeComponent,
+    EditEmployeeComponent,
   ],
   imports: [
     BrowserModule,

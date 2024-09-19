@@ -6,3 +6,17 @@ export interface Employee {
     designation: string;
     address: string;
 }
+
+export interface EmployeeValidation {
+    employeeId: boolean;
+    name: boolean;
+    email: errorType;
+    contact: errorType;
+    designation: boolean;
+    address: boolean;
+}
+
+export interface errorType {
+    required: boolean;
+    invalid: boolean;
+}

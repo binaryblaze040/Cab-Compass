@@ -1,0 +1,58 @@
+<div class="employee">
+  <div class="employee__details">
+    <div class="employee__details-filters">
+      <div class="employee__details-filters-input-row">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Employee Id</span>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="filters.employeeId"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="filters.email"
+          />
+        </div>
+      </div>
+
+      <div class="employee__details-filters-button">
+        <button type="button" class="btn btn-success" (click)="getFilteredEmployees()">Search</button>
+      </div>
+
+    </div>
+
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Cab Required</th>
+          <th scope="col">Employee Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contact No.</th>
+          <th scope="col">Designation</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>
+            <div class="form-check form-switch">
+              <input class="form-check-input custom-checkbox" type="checkbox" id="flexSwitchCheckDefault" onclick="myFunction()">
+            </div>
+          </td>
+          <td>{{ employee.employeeId }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.contact }}</td>
+          <td>{{ employee.designation }}</td>
+          <td>{{ employee.address }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

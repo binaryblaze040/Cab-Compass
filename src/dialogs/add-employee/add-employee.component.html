@@ -1,7 +1,52 @@
-<h1 mat-dialog-title class="dialog-title">Dialog Title</h1>
-<div mat-dialog-content class="dialog-content">
-  <p>This is the dialog content</p>
-</div>
-<div mat-dialog-actions class="dialog-actions">
-  <button mat-flat-button color="primary" (click)="onNoClick()">Close</button>
+<div class="add-employee">
+  <form class="add-employee__form">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Employee Id</span>
+      <input
+        type="text"
+        class="form-control"
+        name="employeeId"
+        [(ngModel)]="newEmployee.employeeId"
+      />
+    </div>
+    <span *ngIf="errors.employeeId" class="add-employee__form__error">Employee Id is required</span>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+      <input type="text" name="name" class="form-control" [(ngModel)]="newEmployee.name" />
+    </div>
+    <span *ngIf="errors.name" class="add-employee__form__error">Name is required</span>
+  
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+      <input type="text" name="email" class="form-control" [(ngModel)]="newEmployee.email" />
+    </div>
+    <span *ngIf="errors.email?.required" class="add-employee__form__error">Email is required</span>
+    <span *ngIf="errors.email?.invalid" class="add-employee__form__error">Enter a valid Email Id</span>
+  
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Contact</span>
+      <input type="number" name="contact" class="form-control" [(ngModel)]="phoneNumber"/>
+    </div>
+    <span *ngIf="errors.contact?.required" class="add-employee__form__error">Contact is required</span>
+    <span *ngIf="errors.contact?.invalid" class="add-employee__form__error">Enter a valid phone number</span>
+  
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Designation</span>
+      <input type="text" name="designation" class="form-control" [(ngModel)]="newEmployee.designation" />
+    </div>
+    <span *ngIf="errors.designation" class="add-employee__form__error">Designation is required</span>
+  
+    <div class="input-group mb-3">
+      <label for="address"><b>Address</b></label>
+      <span class="input-group" id="inputGroup-sizing-default"></span>
+      <textarea class="form-control" name="address" id="address" rows="4" [(ngModel)]="newEmployee.address"></textarea>
+    </div>
+    <span *ngIf="errors.address" class="add-employee__form__error">Address is required</span>
+    
+    <div class="add-employee__form__buttons">
+      <button class="btn btn-primary button" (click)="confirm()">Add Employee</button>
+      <button class="btn btn-danger button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>  
 </div>

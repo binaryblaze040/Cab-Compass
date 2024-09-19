@@ -12,6 +12,15 @@ export class EmployeeService implements OnInit {
   apiUrl = environment.serverUrlLocal;
   employees: Employee[] = [];
 
+  selectedEmployeeForEdit: Employee = {
+    employeeId: '',
+    name: '',
+    email: '',
+    contact: 0,
+    designation: '',
+    address: ''
+  };;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -21,15 +30,15 @@ export class EmployeeService implements OnInit {
     return this.http.get<Employee[]>(this.apiUrl + '/employees');
   }
 
-  addEmployee(employee: Employee): Observable<APIResponse> {
-    return this.http.post<APIResponse>(this.apiUrl + '/add-employee', employee);
+  addEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(this.apiUrl + '/add-employee', employee);
   }
 
-  editEmployee(employee: Employee): Observable<APIResponse> {
-    return this.http.post<APIResponse>(this.apiUrl + '/edit-employee', employee);
+  editEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(this.apiUrl + '/edit-employee', employee);
   }
 
-  deleteEmployee(employee: Employee): Observable<APIResponse> {
-    return this.http.post<APIResponse>(this.apiUrl + '/delete-employee', employee);
+  deleteEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(this.apiUrl + '/delete-employee', {employeeId: employee.employeeId});
   }
 }

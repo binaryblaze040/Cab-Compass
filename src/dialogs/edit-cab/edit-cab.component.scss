@@ -1,0 +1,36 @@
+.edit-cab {
+  overflow: hidden;
+  padding: 6vh 4vw;
+  background-color: rgb(49, 49, 49);
+
+  &__form {
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__error {
+      color: red;
+      font-size: small;
+      position: relative;
+      bottom: 1rem;
+      padding-left: 4px;
+    }
+  }
+
+  .form-control {
+    background-color: rgb(37, 37, 37);
+    color: white;
+  }
+
+  .disabled {
+    background-color: rgb(100, 100, 100);
+  }
+
+  .input-group {
+    &-text {
+      font-weight: bold;
+      background-color: rgb(250, 255, 184);
+    }
+  }
+}

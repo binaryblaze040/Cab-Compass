@@ -1,0 +1,94 @@
+<div class="cab">
+    <div class="cab__details">
+      <div class="cab__details-filters">
+        <div class="cab__details-filters-input-row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Regn. No</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="filters.registrationNumber"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Minimum Capacity</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="filters.capacity"
+            />
+          </div>
+        </div>
+  
+        <div class="cab__details-filters-input-row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Contact</span>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="filters.contact"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Type</span>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="filters.type"
+            />
+          </div>
+        </div>
+
+        <div class="cab__details-filters-availability form-check form-switch">
+            <input 
+                class="form-check-input custom-checkbox" 
+                type="checkbox"
+                id="status"
+                (click)="switchCabAvailability()"
+            >
+            <label class="cab__details-filters-availability-label form-check-label" for="status">Show available cabs only</label>
+        </div>
+  
+        <div class="cab__details-filters-buttons">
+          <div class="cab__details-filters-buttons__search">
+            <button type="button" class="btn btn-success button" (click)="getFilteredCabs()">Search</button>
+          </div>
+          <div class="cab__details-filters-buttons__update">
+            <button *ngIf="!editMode" type="button" class="btn btn-info button" (click)="toggleEditMode()">Edit driver details</button>
+            <button *ngIf="editMode" type="button" class="btn btn-warning button" (click)="toggleEditMode()">Back to View Mode</button>
+            <button type="button" class="btn btn-info button" (click)="addNewCab()">Add a cab</button>
+          </div>
+        </div>
+  
+      </div>
+  
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Model</th>
+            <th scope="col">Driver Name</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Type</th>
+            <th scope="col">Capacity</th>
+            <th scope="col">Regn. No</th>
+            <th scope="col">Status</th>
+            <th *ngIf="editMode" scope="col" colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cab of filteredCabs">
+            <td>{{ cab.model }}</td>
+            <td>{{ cab.driverName }}</td>
+            <td>{{ cab.contact }}</td>
+            <td>{{ cab.type }}</td>
+            <td>{{ cab.capacity }}</td>
+            <td>{{ cab.registrationNumber }}</td>
+            <td>{{ cab.available? "Available" : "Unavailable" }}</td>
+            <td *ngIf="editMode"><button type="button" (click)="editCab(cab)" class="btn btn-primary button">Edit</button></td>
+            <td *ngIf="editMode"><button type="button" (click)="editCab(cab)" class="btn btn-danger button">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

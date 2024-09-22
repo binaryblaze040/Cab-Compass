@@ -16,6 +16,9 @@ import { HomePageComponent } from '../components/home-page/home-page.component';
 import { AssignCabComponent } from '../components/assign-cab/assign-cab.component';
 import { AddEmployeeComponent } from '../dialogs/add-employee/add-employee.component';
 import { EditEmployeeComponent } from '../dialogs/edit-employee/edit-employee.component';
+import { CabComponent } from '../components/cab/cab.component';
+import { AddCabComponent } from '../dialogs/add-cab/add-cab.component';
+import { EditCabComponent } from '../dialogs/edit-cab/edit-cab.component';
 
 
 @NgModule({
@@ -27,6 +30,9 @@ import { EditEmployeeComponent } from '../dialogs/edit-employee/edit-employee.co
     AssignCabComponent,
     AddEmployeeComponent,
     EditEmployeeComponent,
+    CabComponent,
+    AddCabComponent,
+    EditCabComponent,
   ],
   imports: [
     BrowserModule,

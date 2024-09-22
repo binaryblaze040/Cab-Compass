@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee, EmployeeFilters } from '../../types';
+import { Employee, EmployeeFilters, EmployeeWithCabRequirement } from '../../types';
 import { SnackbarService } from '../../services/snackbar.service';
 import { EmployeeService } from '../../services/employee.service';
 
@@ -11,8 +11,9 @@ import { EmployeeService } from '../../services/employee.service';
 export class AssignCabComponent implements OnInit {
   filters: EmployeeFilters = {};
 
-  employees: Employee[] = [];
-  allEmployees: Employee[] = [];
+  employees: EmployeeWithCabRequirement[] = [];
+
+  allEmployees: EmployeeWithCabRequirement[] = [];
 
   constructor(private _snackbar: SnackbarService, private _employeeService: EmployeeService) {
   }
@@ -22,6 +23,7 @@ export class AssignCabComponent implements OnInit {
     this._employeeService.getAllEmployees()
     .subscribe({
       next: (data) => {
+        data = this.addCabRequirement(data);
         this.employees = data;
         this.allEmployees = this.employees;
       },
@@ -31,12 +33,28 @@ export class AssignCabComponent implements OnInit {
     });
   }
 
+  addCabRequirement(employees: EmployeeWithCabRequirement[]): EmployeeWithCabRequirement[] {
+    employees.forEach(employee => {
+      employee.cabRequired = false;
+    });
+    return employees;
+  }
+
+  assignCab(): void {
+    // logic to assign the cab
+    console.log(this.employees);
+  }
+
+  switchCabRequirement(employee: EmployeeWithCabRequirement): void {
+    employee.cabRequired = !employee.cabRequired;
+  }
+
   containsSubstring(word: string, query: string): boolean {
     return word.toLowerCase().includes(query.toLowerCase());
   }
 
   getFilteredEmployees(): void {
-    this.employees = this.allEmployees;
+    this.employees = structuredClone(this.allEmployees);
     if (this.filters.employeeId) {
       this.employees = this.employees.filter((employee) => {
         return this.filters.employeeId
@@ -49,25 +67,6 @@ export class AssignCabComponent implements OnInit {
       this.employees = this.employees.filter((employee) => {
         return this.filters.email
           ? this.containsSubstring(employee.email, this.filters.email)
-          : true;
-      });
-    }
-
-    if (this.filters.contact) { 
-      this.employees = this.employees.filter((employee) => {
-        return this.filters.contact
-          ? this.containsSubstring(
-              employee.contact.toString(),
-              this.filters.contact.toString()
-            )
-          : true;
-      });
-    }
-
-    if (this.filters.address) {
-      this.employees = this.employees.filter((employee) => {
-        return this.filters.address
-          ? this.containsSubstring(employee.address, this.filters.address)
           : true;
       });
     }

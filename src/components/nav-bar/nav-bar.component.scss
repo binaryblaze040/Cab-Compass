@@ -39,7 +39,15 @@
     }
 
     a:hover {
-      color: rgb(0, 161, 54);
+      color: rgb(0, 214, 36);
+      font-size: large;
+    }
+  }
+
+  &__link.active {
+    a {
+      color: rgb(196, 199, 0);
+      font-weight: bold;
     }
   }
 

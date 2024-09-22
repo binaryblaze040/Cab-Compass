@@ -20,3 +20,7 @@ export interface errorType {
     required: boolean;
     invalid: boolean;
 }
+
+export interface EmployeeWithCabRequirement extends Employee {
+    cabRequired?: boolean;
+}

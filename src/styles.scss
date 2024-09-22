@@ -63,7 +63,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Hide the default scrollbar */
 ::-webkit-scrollbar {
-  width: 35px;
+  // width: 35px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -71,8 +72,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 ::-webkit-scrollbar-thumb {
-  background: url('./assets/icons/scroll-taxi.png');
-  background-size: cover;
-  height: 85px;
+  // background: url('./assets/icons/scroll-taxi.png');
+  // background-size: cover;
+  // height: 85px;
+  background: #bfb800;  /* Color of the scrollbar thumb */
+  border-radius: 6px;  /* Round the corners of the scrollbar thumb */
 }
 

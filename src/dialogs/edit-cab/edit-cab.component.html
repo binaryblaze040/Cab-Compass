@@ -1,0 +1,58 @@
+<div class="edit-cab">
+    <form class="edit-cab__form">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Regn. No</span>
+        <input
+          type="text"
+          class="form-control disabled"
+          name="registrationNumber"
+          [(ngModel)]="editCab.registrationNumber"
+          disabled
+        />
+      </div>
+  
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Car Model</span>
+        <input type="text" name="model" class="form-control disabled" [(ngModel)]="editCab.model" disabled/>
+      </div>
+      <span *ngIf="errors.model" class="edit-cab__form__error">Model name is required</span>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Type (Eg. Sedan, Suv)</span>
+        <input type="text" name="type" class="form-control disabled" [(ngModel)]="editCab.type" disabled/>
+      </div>
+      <span *ngIf="errors.type" class="edit-cab__form__error">Car type required</span>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Capacity</span>
+        <input type="number" name="capacity" class="form-control disabled" [(ngModel)]="editCab.capacity" disabled/>
+      </div>
+      <span *ngIf="errors.capacity" class="edit-cab__form__error">Enter a valid capacity</span>
+    
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Driver Name</span>
+        <input type="text" name="driverName" class="form-control" [(ngModel)]="editCab.driverName" />
+      </div>
+      <span *ngIf="errors.driverName" class="edit-cab__form__error">Driver name is required</span>
+    
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Contact</span>
+        <input type="text" name="contact" class="form-control" [(ngModel)]="editCab.contact"/>
+      </div>
+      <span *ngIf="errors.contact?.required" class="edit-cab__form__error">Contact is required</span>
+      <span *ngIf="errors.contact?.invalid" class="edit-cab__form__error">Enter a valid phone number</span>
+    
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Driver License no.</span>
+        <input type="text" name="driverLicenseNumber" class="form-control" [(ngModel)]="editCab.driverLicenseNumber" />
+      </div>
+      <span *ngIf="errors.driverLicenseNumber" class="edit-cab__form__error">License no. is required</span>
+    
+      
+      <div class="edit-cab__form__buttons">
+        <button class="btn btn-primary button" (click)="confirm()">Submit</button>
+        <button class="btn btn-danger button" (click)="cancel()">Cancel</button>
+      </div>
+    </form>  
+  </div>
+  

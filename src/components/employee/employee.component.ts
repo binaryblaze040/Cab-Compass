@@ -44,7 +44,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   getFilteredEmployees(): void {
-    this.employees = this.allEmployees;
+    this.employees = structuredClone(this.allEmployees);
     if (this.filters.employeeId) {
       this.employees = this.employees.filter((employee) => {
         return this.filters.employeeId
@@ -100,7 +100,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   deleteEmployee(employee: Employee): void {
-    if (confirm("Are You sure you want to delete " + employee.name + " ?") == true) {
+    if (confirm("Are you sure you want to delete " + employee.name + " ?") == true) {
       this._employeeService.deleteEmployee(employee)
       .subscribe({
         next: (updatedEmployee: Employee) => {

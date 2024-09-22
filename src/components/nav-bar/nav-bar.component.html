@@ -6,10 +6,10 @@
     </a>
     <nav>
       <ul class="nav-bar__links">
-        <li class="nav-bar__link"><a routerLink="/employee">Employee</a></li>
-        <li class="nav-bar__link"><a href="#">Cabs</a></li>
-        <li class="nav-bar__link"><a routerLink="/assign-cab">Assign Cab</a></li>
-        <li class="nav-bar__link"><a href="#">About</a></li>
+        <li class="nav-bar__link" [class.active]="isActive('/employee')"><a routerLink="/employee">Employee</a></li>
+        <li class="nav-bar__link" [class.active]="isActive('/assign-cab')"><a routerLink="/assign-cab">Assign Cab</a></li>
+        <li class="nav-bar__link" [class.active]="isActive('/cab')"><a routerLink="/cab">Cabs</a></li>
+        <li class="nav-bar__link"><a routerLink="#">About</a></li>
       </ul>
     </nav>
     <a class="nav-bar__buttons" href="#"><button class="nav-bar__contact">How it works?</button></a>

@@ -1,0 +1,51 @@
+.assigned-cabs {
+    padding: 10px 10%;
+    margin-top: 50px;
+  
+    &__details {
+        &-filters {
+            margin-bottom: 50px;
+    
+            &-input-row {
+                display: flex;
+                justify-content: space-between;
+        
+                .form-control {
+                    background-color: rgb(37, 37, 37);
+                    color: white;
+                }
+        
+                .input-group {
+                    &-text {
+                    font-weight: bold;
+                    background-color: rgb(181, 181, 34);
+                    }
+                }
+        
+                .input-group:first-child {
+                    margin-right: 60px;
+                }
+            }
+    
+            &-buttons {
+                display: flex;
+                justify-content: space-between;
+                margin: 20px 0;
+        
+                .button {
+                    padding: 10px;
+                    min-width: 300px;
+                }
+            }
+        }
+  
+        .table {
+            text-align: center;
+
+            .merged-cells {
+                vertical-align: middle;
+            }
+        }
+    }
+  }
+  

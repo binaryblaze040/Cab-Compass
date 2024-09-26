@@ -29,7 +29,11 @@ export class AddEmployeeComponent {
       email: '',
       contact: 0,
       designation: '',
-      address: ''
+      address: '',
+      geoCode: {
+        latitude: 0,
+        longitude: 0
+      }
     };
 
     this.errors = {

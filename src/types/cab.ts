@@ -1,4 +1,4 @@
-import { errorType } from "./employee";
+import { EmployeeWithCabRequirement, errorType } from "./employee";
 
 export interface Cab {
     registrationNumber: string;
@@ -19,4 +19,8 @@ export interface CabValidation {
     model: boolean;
     contact: errorType;
     capacity: boolean;
+}
+
+export interface CabWithAssignedEmployees extends Cab {
+    employees: EmployeeWithCabRequirement[];
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee, EmployeeFilters, EmployeeWithCabRequirement } from '../../types';
 import { SnackbarService } from '../../services/snackbar.service';
 import { EmployeeService } from '../../services/employee.service';
+import { CabService } from '../../services/cab.service';
 
 @Component({
   selector: 'app-assign-cab',
@@ -15,7 +16,11 @@ export class AssignCabComponent implements OnInit {
 
   allEmployees: EmployeeWithCabRequirement[] = [];
 
-  constructor(private _snackbar: SnackbarService, private _employeeService: EmployeeService) {
+  constructor(
+    private _snackbar: SnackbarService, 
+    private _employeeService: EmployeeService,
+    private _cabService: CabService
+  ) {
   }
 
   ngOnInit(): void {
@@ -23,8 +28,7 @@ export class AssignCabComponent implements OnInit {
     this._employeeService.getAllEmployees()
     .subscribe({
       next: (data) => {
-        data = this.addCabRequirement(data);
-        this.employees = data;
+        this.employees = this.addCabRequirement(data);
         this.allEmployees = this.employees;
       },
       error: (error) => {
@@ -33,16 +37,42 @@ export class AssignCabComponent implements OnInit {
     });
   }
 
-  addCabRequirement(employees: EmployeeWithCabRequirement[]): EmployeeWithCabRequirement[] {
+  addCabRequirement(employees: Employee[]): EmployeeWithCabRequirement[] {
+    let employeesWithCabRequirement: EmployeeWithCabRequirement[] = [];
+
     employees.forEach(employee => {
-      employee.cabRequired = false;
+      employeesWithCabRequirement.push(
+        {
+          employeeId: employee.employeeId,
+          name: employee.name,
+          email: employee.email,
+          contact: employee.contact,
+          designation: employee.designation,
+          address: employee.address,
+          cabRequired: false,
+          geoCode: employee.geoCode
+        }
+      );
     });
-    return employees;
+
+    return employeesWithCabRequirement;
+  } 
+
+  assignCabToRequiredEmployees(): void {
+    // logic to assign the cab to employees
+    let employeesToAssignCab = this.getEmployeesWithCabRequirement(this.employees);
+
+    this._cabService.getAvailableCabsPromise()
+    .then((availableCabs) => {
+      if(availableCabs.length === 0) {
+        this._snackbar.openSnackBar("center", "top", 5, "Sorry, no available cabs!");
+      }
+      this._cabService.assignCabs(employeesToAssignCab, availableCabs);
+    });
   }
 
-  assignCab(): void {
-    // logic to assign the cab
-    console.log(this.employees);
+  getEmployeesWithCabRequirement(employeesToFilter: EmployeeWithCabRequirement[]): EmployeeWithCabRequirement[] {
+    return employeesToFilter.filter(emp => emp.cabRequired);
   }
 
   switchCabRequirement(employee: EmployeeWithCabRequirement): void {

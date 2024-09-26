@@ -101,7 +101,7 @@ export class CabComponent {
       });
     }
 
-    this._snackbar.openSnackBar("center", "bottom", 5, "Filters applied, " + this.filteredCabs.length + (this.filteredCabs.length > 1? " employees found!" : " employee found!"));
+    this._snackbar.openSnackBar("center", "bottom", 5, "Filters applied, " + this.filteredCabs.length + (this.filteredCabs.length > 1? " cabs found!" : " cab found!"));
   }
 
   toggleEditMode(): void {

@@ -19,6 +19,7 @@ import { EditEmployeeComponent } from '../dialogs/edit-employee/edit-employee.co
 import { CabComponent } from '../components/cab/cab.component';
 import { AddCabComponent } from '../dialogs/add-cab/add-cab.component';
 import { EditCabComponent } from '../dialogs/edit-cab/edit-cab.component';
+import { AssignedCabComponent } from '../components/assigned-cab/assigned-cab.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { EditCabComponent } from '../dialogs/edit-cab/edit-cab.component';
     CabComponent,
     AddCabComponent,
     EditCabComponent,
+    AssignedCabComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,10 @@ export interface Employee {
     contact: number;
     designation: string;
     address: string;
+    geoCode: {
+        longitude: number,
+        latitude: number
+    }
 }
 
 export interface EmployeeValidation {
@@ -22,5 +26,5 @@ export interface errorType {
 }
 
 export interface EmployeeWithCabRequirement extends Employee {
-    cabRequired?: boolean;
+    cabRequired: boolean;
 }

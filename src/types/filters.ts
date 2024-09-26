@@ -1,3 +1,5 @@
+import { EmployeeWithCabRequirement } from "./employee";
+
 export interface EmployeeFilters {
     employeeId?: string;
     name?: string;
@@ -14,4 +16,11 @@ export interface CabFilters {
     contact?: string;
     available?: boolean;
     capacity?: number;
+}
+
+export interface AssignedCabFilters {
+    registrationNumber?: string;
+    employeeId?: string;
+    employeeContact?: string;
+    employeeEmail?: string;
 }

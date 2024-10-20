@@ -1,11 +1,11 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environment';
 import { Observable } from 'rxjs';
 import { Cab, CabWithAssignedEmployees } from '../types/cab';
 import { SnackbarService } from './snackbar.service';
 import { EmployeeWithCabRequirement } from '../types';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { getDistance } from 'geolib';
 

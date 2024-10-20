@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverUrlLocal: 'ToBeDecided'
+  serverUrlLocal: 'https://cab-compass-backend.onrender.com'
 };
